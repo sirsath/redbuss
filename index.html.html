@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap By SKILLHUB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+      .back{
+          background-image: url(redbus_thumbnail.png);
+      
+
+      }
+        .main{
+            display: flex;
+            flex-wrap: wrap;
+            width: 320px;
+            gap: 10px;
+        }
+        .box{
+            height: 130px;
+            width: 90px;
+            border: 2px solid black;
+        }
+        .hd{
+          text-align: center;
+          text-shadow: brown;
+          text-decoration: 5px underline;
+
+        }
+        
+        
+    </style>
+  </head>
+  <body >
+
+
+       
+    <h1 class="mt-2">Red bus booking....! </h1>
+
+
+
+  <div class="container back mt-4">
+    <!-- <link rel="" href="redbus_thumbnail.png"> -->
+  
+    <div class="row">
+        <div class="col-sm-7">
+          <div id="output">
+            
+          </div>
+            <div class="main" >
+                <div  id="seat1" onclick="handelclick('#seat1')" class="box">1</div>
+                <div  id="seat2" onclick="handelclick('#seat2')" class="box">2</div>
+                <div  id="seat3" onclick="handelclick('#seat3')" class="box">3</div>  
+                <div  id="seat4" onclick="handelclick('#seat4')" class="box">4</div>
+                <div  id="seat5" onclick="handelclick('#seat5')" class="box">5</div>
+                <div  id="seat6" onclick="handelclick('#seat6')" class="box">6</div>
+                <div  id="seat7" onclick="handelclick('#seat7')" class="box">7</div>
+                <div  id="seat8" onclick="handelclick('#seat8')" class="box">8</div>
+                <div  id="seat9" onclick="handelclick('#seat9')" class="box">9</div>
+                <div  id="seat10" onclick="handelclick('#seat10')" class="box">10</div>
+                <div  id="seat11" onclick="handelclick('#seat11')" class="box">11</div>
+                <div  id="seat12" onclick="handelclick('#seat12')" class="box">12</div>
+                <div  id="seat13" onclick="handelclick('#seat13')" class="box">13</div>
+                <div  id="seat14" onclick="handelclick('#seat14')" class="box">14</div>
+                <div  id="seat15" onclick="handelclick('#seat15')" class="box">15</div>
+            </div>
+
+            <button type="button" class="btn btn-dark mt-4" onclick="bookseat()"> Book seat </button>
+        </div>
+        <div class="col-sm-4" >
+        <div  class="card d-none border-dark bg-info" id="bill" >
+          <div class="card-header">Bill</div>
+          <div class="card-body">
+            <p>Selected seat   <strong id="seats">0</strong></p>
+            <p>Estimated   <strong id="ecost">0</strong></p>
+            <p> Gst  <strong id="gst">0</strong></p>
+          </div>
+          <div class="card-footer">
+            <p> Total  <strong id="total">0</strong></p>
+          </div>
+        
+        </div>
+        </div>
+    </div>
+
+
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
+
+    <script>
+       function handelclick(arg) {
+            // console.log("Clicked");
+            console.log(`You clicked on ${arg} box`);
+
+            let x = document
+                .querySelector(arg) 
+                
+            
+            if (!x.classList.contains('bg-secondary')) {
+              x.classList.contains("bg-success")
+                ? x.classList.remove("bg-success")
+                : x.classList.add("bg-success")
+           
+              
+            }
+                
+                display()
+                
+              }
+              
+              function display() {
+
+                
+                let y = document.querySelectorAll('.bg-success')
+                y.length >=1
+                ? document.querySelector("#bill").classList.remove("d-none")
+                :document.querySelector("#bill").classList.add("d-none")
+
+                let a = y.length
+                let b = 500*a
+                let c = b*0.18
+                let d = b+c
+                document.querySelector('#seats').innerHTML = a
+                document.querySelector('#ecost').innerHTML = b
+                document.querySelector('#gst').innerHTML = c
+                document.querySelector('#total').innerHTML = d
+
+            
+          }
+
+          function bookseat(){
+            let allselectedSeats = document.querySelectorAll(".bg-success")  
+            
+            for (let i = 0; i < allselectedSeats.length; i++) {
+              allselectedSeats[i].classList.add("bg-secondary")
+              allselectedSeats[i].classList.remove("bg-success")
+              
+              
+            }
+            document.querySelector("#output").innerHTML =`
+            <div class= " alert alert-success">
+              You have book ${allselectedSeats.length} seats </div>`
+
+            
+            
+          }
+        
+    </script>
+  </body>
+</html>
